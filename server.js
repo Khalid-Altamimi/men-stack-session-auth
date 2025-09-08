@@ -7,6 +7,9 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const morgan = require("morgan");
 
+//controllers
+const authController = require("./controllers/auth.js");
+
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : "3000";
 
@@ -28,6 +31,9 @@ app.use(morgan('dev'));
 app.get("/", async (req, res) => {
   res.render("index.ejs");
 });
+
+app.use("/auth", authController);
+
 
 
 //private
